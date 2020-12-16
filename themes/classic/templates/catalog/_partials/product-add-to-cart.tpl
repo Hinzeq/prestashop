@@ -85,4 +85,11 @@
       </p>
     {/block}
   {/if}
+
+  {if $product.availability_message == "24h"}
+    <b class="text-success">Wysyłka w 24 godziny</b>
+  {else}
+    <b class="text-danger">Brak informacji</b>
+  {/if}
+
 </div>
