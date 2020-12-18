@@ -9,6 +9,10 @@ class TestsiteController extends FrontControllerCore
 
     public function initContent(){
         parent::initContent();
+        $this->context->smarty->assign(
+            array(
+              'valw' => 'wartość'
+            ));
         $this->setTemplate('catalog/_partials/custom_page');
     }
 
