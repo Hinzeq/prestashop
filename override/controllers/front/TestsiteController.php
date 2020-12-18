@@ -8,9 +8,8 @@ class TestsiteController extends FrontControllerCore
     protected $firstProduct;
 
     public function initContent(){
-        //die('działa poprawnie :)');
         parent::initContent();
-        $this->setTemplate('new-index');
+        $this->setTemplate('catalog/_partials/custom_page');
     }
 
 }
