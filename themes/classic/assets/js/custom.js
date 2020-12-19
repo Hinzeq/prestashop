@@ -6,6 +6,11 @@
 
 $(document).ready(function() {
     $("#my-function-button").click(function() {
-        $("#load-ten-product").html("tutaj wczytam zawartość");
+        $.ajax({url: '/test.txt', // tutaj utworzyłem plik testowy w głównym katalogu
+            success: function(x){
+                $("#load-ten-product").html(x);
+            }
+        });
+        // $("#load-ten-product").html("tutaj wczytam zawartość");
     });
 });

@@ -11,7 +11,7 @@ class TestsiteController extends FrontControllerCore
         parent::initContent();
         $this->context->smarty->assign(
             array(
-              'valw' => 'wartość'
+              'val' => 'test'
             ));
         $this->setTemplate('catalog/_partials/custom_page');
     }
