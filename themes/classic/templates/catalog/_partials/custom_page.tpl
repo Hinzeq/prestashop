@@ -4,6 +4,5 @@
   <h1>Stworzony nowy widok za pomocą front controllera</h1>
   <p>Po naciśnięciu przycisku zostanie wczytane 10 losowych produktów.</p>
   <button id="my-function-button">Wczytaj</button>
-  <div id="load-ten-product">
-  <h2>{$val}</h2>
+  <div id="load-ten-product"></div>
 {/block}

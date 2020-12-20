@@ -8,12 +8,31 @@ class TestsiteController extends FrontControllerCore
     protected $firstProduct;
 
     public function initContent(){
-        parent::initContent();
-        $this->context->smarty->assign(
-            array(
-              'val' => 'test'
-            ));
         $this->setTemplate('catalog/_partials/custom_page');
+        parent::initContent();
+    }
+
+    public function displayAjaxGetProducts() {
+        $db = Db::getInstance();
+
+        $request  = "SELECT * FROM ps_product ORDER BY id_product DESC LIMIT 10";
+        $result = $db->executeS($request);
+
+        $data = ['dane' => 'moje testowe dane'];
+
+        if(!$this->errors) {
+            $this->ajaxDie(Tools::jsonEncode([
+                'data' => $data,
+                'products' => $result
+            ]));
+        }
+
+        else {
+            $this->ajaxDie(Tools::jsonEncode([
+                'hasError' => true,
+                'errors' => $this->errors
+            ]));
+        }
     }
 
 }
