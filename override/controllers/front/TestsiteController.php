@@ -3,7 +3,7 @@
 class TestsiteController extends FrontControllerCore
 {
 
-    public $php_self = 'testsite'; // dostępne pod adresem [domena]/index.php?controller=testsite
+    public $php_self = 'testsite'; // [domena]/index.php?controller=testsite
     public $ssl = true;
     protected $firstProduct;
 
@@ -16,14 +16,17 @@ class TestsiteController extends FrontControllerCore
         $db = Db::getInstance();
 
         $request  = "SELECT * FROM ps_product ORDER BY id_product DESC LIMIT 10";
-        $result = $db->executeS($request);
+        $products_info = $db->executeS($request);
 
-        $data = ['dane' => 'moje testowe dane'];
+        $request  = "SELECT * FROM ps_product_lang ORDER BY id_product DESC LIMIT 10";
+        $products_name = $db->executeS($request);
 
         if(!$this->errors) {
             $this->ajaxDie(Tools::jsonEncode([
-                'data' => $data,
-                'products' => $result
+                'products_info' => $products_info,
+                'products_name' => $products_name,
+                'products_img' => $products_img,
+                'success' => true
             ]));
         }
 
@@ -34,5 +37,7 @@ class TestsiteController extends FrontControllerCore
             ]));
         }
     }
+
+    
 
 }

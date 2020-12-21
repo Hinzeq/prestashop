@@ -4,8 +4,6 @@
  */
 
 
-
-
 $(document).ready(function(){
     $("#my-function-button").click(function(){
         $.ajax({
@@ -19,9 +17,16 @@ $(document).ready(function(){
             success: function(data) {
                 if(data) {
                     data = $.parseJSON(data);
-                    products = data.products;
-                    console.log(products);
-                    $("#load-ten-product").html(data.data.dane);
+                    products_info = data.products_info;
+                    products_name = data.products_name;
+                    
+                    if($(".how-many").length < 10) {
+                        for(i = 0; i < 10; i++) {
+                            $("#load-ten-product").append(
+                                '<p class="how-many">' + products_info[i].id_product + ". " +
+                                products_name[i].name + "</p>");
+                        }
+                    }
                 }
             }
         })
